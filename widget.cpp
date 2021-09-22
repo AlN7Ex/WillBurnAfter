@@ -47,11 +47,11 @@ void Widget::checkEnter()
     if (inputText->text() == "123")
     {
         outputText->setText("Accepted!");
-        inputText->clear();
     }
     else
     {
         outputText->setText("Wrong input!!!");
-        inputText->clear();
     }
+
+    //inputText->clear();
 }
