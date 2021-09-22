@@ -7,6 +7,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QLabel>
+#include <QPixmap>
 
 class Widget : public QWidget
 {
@@ -16,14 +17,17 @@ public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 private:
+    QLabel * lbl;
     QLabel * headlbl;
-    QLabel * textlbl;
+    QLabel * loginlbl;
     QLabel * passwordlbl;
-    QLineEdit * inputText;
+    QLineEdit * inputLogin;
     QLineEdit * outputText;
     QLineEdit * inputPassword;
     QPushButton * enterBtn;
     QVBoxLayout * mlayout;
+    QHBoxLayout * h1layout;
+    QHBoxLayout * h2layout;
 private slots:
     void checkEnter();
 

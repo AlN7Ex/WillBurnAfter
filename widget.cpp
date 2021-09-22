@@ -3,16 +3,23 @@
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
 {
+    lbl = new QLabel;
+    QPixmap pix("D:/picture.jpeg");
+    lbl->resize(pix.size());
+    lbl->setPixmap(pix);
+
     headlbl = new QLabel("TOP SECRET");
-    textlbl = new QLabel("&Login:");
+    loginlbl = new QLabel("&Login:");
     passwordlbl = new QLabel("&Password:");
-    inputText = new QLineEdit;
+    inputLogin = new QLineEdit;
     inputPassword = new QLineEdit;
     outputText = new QLineEdit;
     enterBtn = new QPushButton("&Enter");
     mlayout = new QVBoxLayout;
+    h1layout = new QHBoxLayout;
+    h2layout = new QHBoxLayout;
 
-    textlbl->setBuddy(inputText);
+    loginlbl->setBuddy(inputLogin);
     passwordlbl->setBuddy(inputPassword);
 
     headlbl->setFrameStyle(QFrame::Box | QFrame::Raised);
@@ -23,15 +30,17 @@ Widget::Widget(QWidget *parent)
     inputPassword->setEchoMode(QLineEdit::Password);
     outputText->setDisabled(true);
 
-    connect(inputText, &QLineEdit::textChanged, outputText, &QLineEdit::setText);
     connect(enterBtn, &QPushButton::clicked, this, &Widget::checkEnter);
 
+    h1layout->addWidget(loginlbl);
+    h1layout->addWidget(inputLogin);
+    h2layout->addWidget(passwordlbl);
+    h2layout->addWidget(inputPassword);
+
     mlayout->addWidget(headlbl);
-    mlayout->addWidget(textlbl);
+    mlayout->addLayout(h1layout);
+    mlayout->addLayout(h2layout);
     mlayout->addWidget(outputText);
-    mlayout->addWidget(inputText);
-    mlayout->addWidget(passwordlbl);
-    mlayout->addWidget(inputPassword);
     mlayout->addWidget(enterBtn);
 
     setLayout(mlayout);
@@ -44,14 +53,19 @@ Widget::~Widget()
 
 void Widget::checkEnter()
 {
-    if (inputText->text() == "admin" && inputPassword->text() == "12345")
+    if (inputLogin->text() == "admin" && inputPassword->text() == "12345")
     {
         outputText->setText("Accepted!");
+        lbl->show();
     }
     else
     {
         outputText->setText("Access denied!");
     }
 
-    //inputText->clear();
+    inputLogin->clear();
+    inputPassword->clear();
 }
+
+
+
