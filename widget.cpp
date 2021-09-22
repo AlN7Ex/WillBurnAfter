@@ -4,12 +4,12 @@ Widget::Widget(QWidget *parent)
     : QWidget(parent)
 {
     headlbl = new QLabel("TOP SECRET");
-    textlbl = new QLabel("&Text: ");
-    passwordlbl = new QLabel("&Password: ");
+    textlbl = new QLabel("&Login:");
+    passwordlbl = new QLabel("&Password:");
     inputText = new QLineEdit;
     inputPassword = new QLineEdit;
     outputText = new QLineEdit;
-    enterBtn = new QPushButton("Enter");
+    enterBtn = new QPushButton("&Enter");
     mlayout = new QVBoxLayout;
 
     textlbl->setBuddy(inputText);
@@ -44,13 +44,13 @@ Widget::~Widget()
 
 void Widget::checkEnter()
 {
-    if (inputText->text() == "123")
+    if (inputText->text() == "admin" && inputPassword->text() == "12345")
     {
         outputText->setText("Accepted!");
     }
     else
     {
-        outputText->setText("Wrong input!!!");
+        outputText->setText("Access denied!");
     }
 
     //inputText->clear();
