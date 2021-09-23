@@ -14,13 +14,13 @@ Widget::Widget(QWidget *parent)
       h1layout      (new QHBoxLayout),
       h2layout      (new QHBoxLayout)
 {
-    loginlbl        ->      setBuddy(inputLogin);
-    passwordlbl     ->      setBuddy(inputPassword);
+    loginlbl->setBuddy(inputLogin);
+    passwordlbl->setBuddy(inputPassword);
 
-    headlbl         ->      setFrameStyle(QFrame::Box | QFrame::Raised);
+    headlbl->setFrameStyle(QFrame::Box | QFrame::Raised);
 
-    inputPassword   ->      setEchoMode(QLineEdit::Password);
-    outputText      ->      setDisabled(true);
+    inputPassword->setEchoMode(QLineEdit::Password);
+    outputText->setDisabled(true);
 
     connect(enterBtn, &QPushButton::clicked, this, &Widget::checkEnter);
 
@@ -74,6 +74,3 @@ void Widget::checkEnter()
     inputLogin->clear();
     inputPassword->clear();
 }
-
-
-

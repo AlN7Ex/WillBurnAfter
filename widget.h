@@ -9,13 +9,12 @@
 #include <QVBoxLayout>
 #include <QWidget>
 
-
 class Widget : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit Widget(QWidget *parent = nullptr);
+    explicit Widget(QWidget *const parent = nullptr);
     ~Widget();
 private:
     QLabel      * const lbl;
@@ -31,7 +30,6 @@ private:
     QHBoxLayout * const h2layout;
 private slots:
     void checkEnter();
-
-
 };
+
 #endif // WIDGET_H
