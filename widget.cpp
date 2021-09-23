@@ -1,34 +1,26 @@
 #include "widget.h"
 
 Widget::Widget(QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent),
+      lbl           (new QLabel),
+      headlbl       (new QLabel("TOP SECRET")),
+      loginlbl      (new QLabel("&Login")),
+      passwordlbl   (new QLabel("&Password")),
+      inputLogin    (new QLineEdit),
+      inputPassword (new QLineEdit),
+      outputText    (new QLineEdit),
+      enterBtn      (new QPushButton("&Enter")),
+      mlayout       (new QVBoxLayout),
+      h1layout      (new QHBoxLayout),
+      h2layout      (new QHBoxLayout)
 {
-    lbl = new QLabel;
-    QPixmap pix("D:/picture.jpeg");
-    lbl->resize(pix.size());
-    lbl->setPixmap(pix);
+    loginlbl        ->      setBuddy(inputLogin);
+    passwordlbl     ->      setBuddy(inputPassword);
 
-    headlbl = new QLabel("TOP SECRET");
-    loginlbl = new QLabel("&Login:");
-    passwordlbl = new QLabel("&Password:");
-    inputLogin = new QLineEdit;
-    inputPassword = new QLineEdit;
-    outputText = new QLineEdit;
-    enterBtn = new QPushButton("&Enter");
-    mlayout = new QVBoxLayout;
-    h1layout = new QHBoxLayout;
-    h2layout = new QHBoxLayout;
+    headlbl         ->      setFrameStyle(QFrame::Box | QFrame::Raised);
 
-    loginlbl->setBuddy(inputLogin);
-    passwordlbl->setBuddy(inputPassword);
-
-    headlbl->setFrameStyle(QFrame::Box | QFrame::Raised);
-    headlbl->setLineWidth(2);
-    headlbl->setFixedHeight(50);
-
-
-    inputPassword->setEchoMode(QLineEdit::Password);
-    outputText->setDisabled(true);
+    inputPassword   ->      setEchoMode(QLineEdit::Password);
+    outputText      ->      setDisabled(true);
 
     connect(enterBtn, &QPushButton::clicked, this, &Widget::checkEnter);
 
@@ -44,11 +36,24 @@ Widget::Widget(QWidget *parent)
     mlayout->addWidget(enterBtn);
 
     setLayout(mlayout);
+    setMaximumSize(250,250);
+    setMinimumSize(200,200);
 
 }
 
 Widget::~Widget()
 {
+    delete lbl;
+    delete headlbl;
+    delete loginlbl;
+    delete passwordlbl;
+    delete inputLogin;
+    delete inputPassword;
+    delete outputText;
+    delete enterBtn;
+    delete mlayout;
+    delete h1layout;
+    delete h2layout;
 }
 
 void Widget::checkEnter()
@@ -56,6 +61,9 @@ void Widget::checkEnter()
     if (inputLogin->text() == "admin" && inputPassword->text() == "12345")
     {
         outputText->setText("Accepted!");
+        QPixmap pix("D:/picture.jpeg");
+        lbl->resize(pix.size());
+        lbl->setPixmap(pix);
         lbl->show();
     }
     else

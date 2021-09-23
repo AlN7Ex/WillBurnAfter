@@ -1,33 +1,34 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 
-#include <QWidget>
-#include <QTextEdit>
-#include <QLineEdit>
-#include <QPushButton>
-#include <QVBoxLayout>
 #include <QLabel>
+#include <QLineEdit>
 #include <QPixmap>
+#include <QPushButton>
+#include <QTextEdit>
+#include <QVBoxLayout>
+#include <QWidget>
+
 
 class Widget : public QWidget
 {
     Q_OBJECT
 
 public:
-    Widget(QWidget *parent = nullptr);
+    explicit Widget(QWidget *parent = nullptr);
     ~Widget();
 private:
-    QLabel * lbl;
-    QLabel * headlbl;
-    QLabel * loginlbl;
-    QLabel * passwordlbl;
-    QLineEdit * inputLogin;
-    QLineEdit * outputText;
-    QLineEdit * inputPassword;
-    QPushButton * enterBtn;
-    QVBoxLayout * mlayout;
-    QHBoxLayout * h1layout;
-    QHBoxLayout * h2layout;
+    QLabel      * const lbl;
+    QLabel      * const headlbl;
+    QLabel      * const loginlbl;
+    QLabel      * const passwordlbl;
+    QLineEdit   * const inputLogin;
+    QLineEdit   * const inputPassword;
+    QLineEdit   * const outputText;
+    QPushButton * const enterBtn;
+    QVBoxLayout * const mlayout;
+    QHBoxLayout * const h1layout;
+    QHBoxLayout * const h2layout;
 private slots:
     void checkEnter();
 
