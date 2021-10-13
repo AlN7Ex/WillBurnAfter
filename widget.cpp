@@ -61,7 +61,7 @@ void Widget::checkEnter()
     if (inputLogin->text() == "admin" && inputPassword->text() == "12345")
     {
         outputText->setText("Accepted!");
-        QPixmap pix("D:/picture.jpeg");
+        QPixmap pix(":/img/cars.jpeg");
         lbl->resize(pix.size());
         lbl->setPixmap(pix);
         lbl->show();
